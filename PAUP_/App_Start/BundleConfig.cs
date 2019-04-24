@@ -23,7 +23,8 @@ namespace PAUP_
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                     
+                      "~/Content/bootstrap.min (2).css",
                       "~/Content/site.css"));
         }
     }

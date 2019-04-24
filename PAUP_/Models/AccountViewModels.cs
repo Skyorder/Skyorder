@@ -86,6 +86,19 @@ namespace PAUP_.Models
         [Display(Name = "Dodajte broj mobitela")]
         public string Brmobitela { get; set; }
 
+        [Required]
+        [StringLength(12, ErrorMessage = "{0} mora biti minimalno {2} znakova duga.", MinimumLength = 9)]
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Upišite adresu")]
+        public string adresa { get; set; }
+
+        [Required]
+        [StringLength(12, ErrorMessage = "{0} mora biti minimalno {2} znakova duga.", MinimumLength = 9)]
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Upišite naziv poduzeća")]
+        public string Naziv { get; set; }
+
+       
     }
 
     public class ResetPasswordViewModel

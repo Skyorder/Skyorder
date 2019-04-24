@@ -12,6 +12,11 @@ namespace PAUP_.Controllers
         {
             return View();
         }
+        public ActionResult Restorani()
+        {
+            return View();
+        }
+
 
         public ActionResult Onama()
         {
