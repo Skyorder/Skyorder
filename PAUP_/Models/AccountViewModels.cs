@@ -58,7 +58,7 @@ namespace PAUP_.Models
         [Display(Name = "Lozinka")]
         public string Password { get; set; }
 
-        [Display(Name = "Zapamti me?")]
+        [Display(Name = "Zapamti me")]
         public bool RememberMe { get; set; }
     }
 
@@ -79,7 +79,13 @@ namespace PAUP_.Models
         [Display(Name = "Potvrdi lozinku")]
         [Compare("Password", ErrorMessage = "Lozinke se ne podudaraju.")]
         public string ConfirmPassword { get; set; }
-       
+
+        [Required]
+        [StringLength(12, ErrorMessage = "{0} mora biti minimalno {2} znakova duga.", MinimumLength = 9)]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Dodajte broj mobitela")]
+        public string Brmobitela { get; set; }
+
     }
 
     public class ResetPasswordViewModel
