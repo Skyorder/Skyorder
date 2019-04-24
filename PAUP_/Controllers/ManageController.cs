@@ -55,12 +55,12 @@ namespace PAUP_.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                message == ManageMessageId.ChangePasswordSuccess ? "Vaša lozinka je promijenjena."
+                : message == ManageMessageId.SetPasswordSuccess ? "Vaša lozinka je postavljena."
+                : message == ManageMessageId.SetTwoFactorSuccess ? "Dvostruka autentifikacija je postavljena."
+                : message == ManageMessageId.Error ? "Pojavila se pogreška."
+                : message == ManageMessageId.AddPhoneSuccess ? "Vaš broj telefona je dodan."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Vaš broj telefona je uklonjen."
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -123,7 +123,7 @@ namespace PAUP_.Controllers
                 var message = new IdentityMessage
                 {
                     Destination = model.Number,
-                    Body = "Your security code is: " + code
+                    Body = "Vaš sigurnosni kod je: " + code
                 };
                 await UserManager.SmsService.SendAsync(message);
             }
@@ -190,7 +190,7 @@ namespace PAUP_.Controllers
                 return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
             }
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "Failed to verify phone");
+            ModelState.AddModelError("", "Neuspješna verifikacija telefona.");
             return View(model);
         }
 
@@ -281,8 +281,8 @@ namespace PAUP_.Controllers
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : message == ManageMessageId.Error ? "An error has occurred."
+                message == ManageMessageId.RemoveLoginSuccess ? "Vanjska prijava je uklonjena."
+                : message == ManageMessageId.Error ? "Pojavila se pogreška."
                 : "";
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user == null)
